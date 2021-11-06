@@ -52,7 +52,6 @@ def config(**kwargs):
             __plot_params[key] = value
 
 def plot(df, start=None, end=None, **kwargs):
-    print("hello")
     '''
     plot candle chart with 'df'(DataFrame) from 'start' to 'end'
     * df: DataFrame to plot
