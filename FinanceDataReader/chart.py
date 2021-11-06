@@ -96,7 +96,7 @@ def plot(df, start=None, end=None, **kwargs):
     inc = df.Close > df.Open
     dec = df.Open > df.Close
 
-    output_notebook()
+    #output_notebook()
     
     # plot price OHLC candles
     x = np.arange(len(df))
