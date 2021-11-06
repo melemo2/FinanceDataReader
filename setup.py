@@ -7,4 +7,7 @@ setup(
     url='https://github.com/melemo2/FinanceDataReader.git',
     version='0.1',
     packages=find_packages(),
+    license='MIT',
+    install_requires=[],
+    zip_safe=False,
 )
