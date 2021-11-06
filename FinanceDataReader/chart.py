@@ -130,7 +130,7 @@ def plot(df, start=None, end=None, **kwargs):
         pal = d3['Category10'][10]
         pp.line(x, df[f'MA_{n}'], line_color=pal[ix % len(pal)])
 
-    if params['recent_high'] & 1 == 2:
+    if params['recent_high']:
         to = df.index.max() + timedelta(days=params['recent_high'])
         hline = Span(location=df.Close[:to].max(), dimension='width', line_dash='dashed', line_color='gray', line_width=2)
         pp.renderers.extend([hline])
