@@ -21,6 +21,8 @@ __fact_def_params = {  # factory default params
     'color_down': 'blue',
     'color_volume_up': 'red', 
     'color_volume_down': 'blue',
+    'price_indicator' : [],
+    'volume_indicator' : [],
 }
 
 __plot_params = dict(__fact_def_params)
@@ -57,7 +59,7 @@ def plot(df, start=None, end=None, **kwargs):
     * df: DataFrame to plot
     * start(default: None)
     * end(default: None)
-    * recent_high: display recent high price befre n-days (if recent_high == -1 plot plot recent high yesterday)
+    * recent_high: display recent high price befre n-days (if recent_high == -1 then plot recent high yesterday)
     '''
     try:
         from bokeh.plotting import figure, gridplot
@@ -95,7 +97,7 @@ def plot(df, start=None, end=None, **kwargs):
     inc = df.Close > df.Open
     dec = df.Open > df.Close
 
-    output_notebook()
+    #output_notebook()
     
     # plot price OHLC candles
     x = np.arange(len(df))
@@ -128,7 +130,7 @@ def plot(df, start=None, end=None, **kwargs):
         pal = d3['Category10'][10]
         pp.line(x, df[f'MA_{n}'], line_color=pal[ix % len(pal)])
 
-    if params['recent_high']:
+    if params['recent_high'] & 1 == 2:
         to = df.index.max() + timedelta(days=params['recent_high'])
         hline = Span(location=df.Close[:to].max(), dimension='width', line_dash='dashed', line_color='gray', line_width=2)
         pp.renderers.extend([hline])
